@@ -5,15 +5,15 @@ const { isAdmin } = require('../utils/authorizationMiddleware');
 
 const router = express.Router();
 
-router.get('/employees', getEmployees);
+router.get('/:userID/employees', requireSignIn, isAuth, getEmployees);
 
-router.get('/employees/:empID', getEmployeeByID);
+router.get('/:userID/employees/:empID',requireSignIn, isAuth,  getEmployeeByID);
 
-router.post('/employees',  addEmployee);
+router.post('/:userID/employees', requireSignIn, isAuth, isAdmin, addEmployee);
 
-router.put('/employees/:empID', updateEmployee);
+router.put('/:userID/employees/:empID', requireSignIn, isAuth, isAdmin, updateEmployee);
 
-router.delete('/employees/:empID', deleteEmployee);
+router.delete('/:userID/employees/:empID',requireSignIn, isAuth, isAdmin,  deleteEmployee);
 
 router.param('userID', getLoggedUserByID);
 
