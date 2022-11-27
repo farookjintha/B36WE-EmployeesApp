@@ -61,8 +61,8 @@ exports.updateEmployee = (req, res) => {
 
 exports.deleteEmployee = async (req, res) => {
     try{
-        const existingEmployee = await Employee.findOne({_id: req.params.empID});
-
+        const existingEmployee = await Employees.findOne({_id: req.params.empID});
+        console.log(existingEmployee)
         if(existingEmployee){
             Employees.deleteOne({_id: existingEmployee._id}, (err, data) => {
                 if(err){
