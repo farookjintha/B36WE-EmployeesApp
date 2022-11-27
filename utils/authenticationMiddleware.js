@@ -9,9 +9,7 @@ exports.requireSignIn = expressjwt({
 
 //Authentication -> whether the user is logged in or not?
 exports.isAuth = (req, res, next) => {
-    console.log('Req. Auth: ', req.auth);
-    console.log('Re.Profile: ', req.profile);
-    let user = req.profile && req.auth._id === req.params._id;
+    let user = req.profile && req.auth._id === (req.profile._id).toString();
 
     if(!user){
         return res.status(401).send({message: 'Access Denied! Login required!'})

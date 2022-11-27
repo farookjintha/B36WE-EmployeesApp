@@ -7,7 +7,6 @@ exports.getEmployees = (req, res) => {
             if(err){
                 return res.status(400).send({message: 'Error while retrieving employees.'})
             }
-
             res.status(200).send(data);
         })
     }catch(error){
@@ -79,14 +78,13 @@ exports.deleteEmployee = async (req, res) => {
     }
 };
 
-exports.getLoggedUserByID = (req, res, next, id) => {
+exports.getLoggedUserByID = (req, res, next, userID) => {
     try{
-        Employees.findOne({_id: id},(err, data) => {
+        Employees.findOne({_id: userID},(err, data) => {
             if(err){
                 return res.status(400).send({message: 'Employee doesnt exist. Register as a new employee.'})
             }
             req.profile = data;
-            req.profile._id = id;
             next();
         })
     }catch(error){

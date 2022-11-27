@@ -31,6 +31,7 @@ exports.signin = async (req, res) => {
         const {email, password} = req.body;
 
         const existingEmployee = await Employees.findOne({email: email});
+        console.log(existingEmployee, "::::: Existing Employee")
 
         if(existingEmployee){
             const isValidCredentials = await bcrpyt.compare(password, existingEmployee.hashedPassword);
