@@ -7,13 +7,13 @@ const router = express.Router();
 
 router.get('/:userID/employees', getEmployees);
 
-router.get('/:userID/employees/:empID',requireSignIn, isAuth,  getEmployeeByID);
+router.get('/:userID/employees/:empID', getEmployeeByID);
 
-router.post('/:userID/employees', requireSignIn, isAuth, isAdmin, addEmployee);
+router.post('/:userID/employees',  addEmployee);
 
-router.put('/:userID/employees/:empID', requireSignIn, isAuth, isAdmin, updateEmployee);
+router.put('/:userID/employees/:empID', updateEmployee);
 
-router.delete('/:userID/employees/:empID',requireSignIn, isAuth, isAdmin,  deleteEmployee);
+router.delete('/:userID/employees/:empID', deleteEmployee);
 
 router.param('userID', getLoggedUserByID);
 
