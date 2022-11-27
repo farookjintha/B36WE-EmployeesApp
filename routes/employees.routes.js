@@ -5,7 +5,7 @@ const { isAdmin } = require('../utils/authorizationMiddleware');
 
 const router = express.Router();
 
-router.get('/:userID/employees', requireSignIn, isAuth, getEmployees);
+router.get('/:userID/employees', getEmployees);
 
 router.get('/:userID/employees/:empID',requireSignIn, isAuth,  getEmployeeByID);
 
